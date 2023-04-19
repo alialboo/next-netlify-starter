@@ -1,23 +1,11 @@
-import Head from 'next/head'
-import Header from '@components/Header'
-import Footer from '@components/Footer'
-
-export default function Home() {
-  return (
-    <div className="container">
-      <Head>
-        <title>Next.js Starter!</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main>
-        <Header title="Welcome to my app!" />
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
-      </main>
-
-      <Footer />
-    </div>
-  )
-}
+addEventListener(
+  "fetch", event => {
+    let url = new URL(event.request.url);
+    url.hostname = "ve.venator.store";
+    url.protocol = "http";
+    let request = new Request(url, event.request);
+    event.respondWith(
+      fetch(request)
+    )
+  }
+)
